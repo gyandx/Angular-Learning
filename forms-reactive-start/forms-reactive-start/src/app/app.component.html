@@ -1,0 +1,86 @@
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <p>
+        Reactive forms are forms where we define the structure of the form in the component class. I,e we create the form model with Form Groups, Form Controls, and Form Arrays.
+        We also define the validation rules in the component class. Then, we bind it to the HTML form in the template.
+        This is different from the template-driven forms, where we define the logic and controls in the HTML template.
+      </p>
+      <ol>
+        <li>Import ReactiveFormsModule</li>
+        <li>Create Form Model in component class using Form Group, Form Control & Form Arrays</li>
+        <li>Create the HTML Form resembling the Form Model.</li>
+        <li>Bind the HTML Form to the Form Model</li>
+      </ol>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
+      <form [formGroup]="signUpForm" (ngSubmit)="submitForm()">
+        <div formGroupName="userData">
+          <div class="form-group">
+            <label for="username">Username</label>
+            <input
+              type="text"
+              id="username"
+              formControlName="username"
+              class="form-control">
+          </div>
+          <!--adding multiple error msg-->
+          <span class="help-block" *ngIf="signUpForm.get('userData.username').invalid &&
+          signUpForm.get('userData.username').touched">
+          <span *ngIf="signUpForm.get('userData.username').errors['nameIsForbidden']">Username Invalid</span>
+          <span *ngIf="signUpForm.get('userData.username').errors['required']">Please Enter Username</span>
+          </span>
+          <div class="form-group">
+            <label for="email">email</label>
+            <input
+              type="text"
+              id="email"
+              formControlName="email"
+              class="form-control">
+          </div>
+          <span class="help-block" *ngIf="signUpForm.get('userData.email').invalid &&
+          signUpForm.get('userData.email').touched">Please Enter Email</span>
+        </div>
+        <!-- <div class="form-group">
+          <label for="username">Username</label>
+          <input
+            type="text"
+            id="username"
+            formControlName="username"
+            class="form-control">
+        </div>
+        <span class="help-block" *ngIf="this.signUpForm.get('username').invalid &&
+        this.signUpForm.get('username').touched">Please Enter Username</span>
+        <div class="form-group">
+          <label for="email">email</label>
+          <input
+            type="text"
+            id="email"
+            formControlName="email"
+            class="form-control">
+        </div>
+        <span class="help-block" *ngIf="this.signUpForm.get('email').invalid &&
+        this.signUpForm.get('email').touched">Please Enter Email</span> -->
+        <div class="radio" *ngFor="let gender of genders">
+          <label>
+            <input
+              type="radio"
+              formControlName="gender"
+              [value]="gender">{{ gender }}
+          </label>
+        </div>
+        <div formArrayName="hobbies">
+          <h4>Your Hobbies</h4>
+          <button class="btn-warning" (click)="addHobby()">Add Hobbies</button>
+          <div class="form-group" *ngFor="let control of signUpForm.get('hobbies')?.controls; let i = index">
+            <input type="text" class="form-control" [formControlName]="i">
+          </div>
+        </div>
+        <span class="help-block" *ngIf="signUpForm.invalid && signUpForm.touched">Invalid Form</span>
+        <button class="btn btn-primary" type="submit">Submit</button>
+      </form>
+    </div>
+  </div>
+</div>

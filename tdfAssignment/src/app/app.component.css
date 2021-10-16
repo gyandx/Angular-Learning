@@ -1,0 +1,11 @@
+button{
+  margin-top: 10px;
+}
+
+input.ng-touched.ng-invalid, select.ng-touched.ng-invalid{
+  border: 1px solid red;
+}
+
+.help-block{
+  color: red;
+}

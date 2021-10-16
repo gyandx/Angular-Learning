@@ -1,0 +1,67 @@
+<div class="container">
+  <div class="row">
+    <h4>Routing</h4>
+    <ul>
+      <li>Routing is used to navigate between one component to another.</li>
+      <li>We have to declare a const variable named appRoutes which is an array of objects containing 2 keys 'path' and 'component'.</li>
+      <li>We have to add Routes and RouterModule to imports in appModule(i.e RouterModule.forRoot(appRoutes))</li>
+      <li>We have to use routerLink property to navigate between components as using routerLink it does not reload the pages like using href it reloads the page</li>
+      <li>When we use relative path in routerLink in child components, the path is just always appended to the current url path.
+        for ex:- suppose the current path is localhost4200:servers and we are on servers component and there we use relative path in html page,
+      then suppose on server component we use routerLink="server", the this is appended to current url i.e localhost:4200/servers/server    </li>
+      <li>We can use routerLinkActive to dynamically active the selected class.</li>
+      <li>We can use routerLinkActiveOptions to exact to exactly dynamically active the selected class.</li>
+      <li>We have to put the routerOutlet directive to display all tags.</li>
+      <li>
+        <p>Difference between router.navigate and routerLink</p>
+        <ul>
+          <li>Navigate method does not know the current path or component to which it exist, so to make it know to which
+            component or path it exist we have to pass 1 extra argument to navigate function i.e relativeTo which is the activatedRoute
+            i.e <strong>this.router.navigate(['/abc'], relativeTo: this.activatePath)</strong>. It also not show error which we use only relative path in 1st argument
+            because it does not know about the current path as it default assume the relativeTo is the base url.
+          </li>
+          <li>
+            In case of routerLink it know the current component path or the current component, so if proper relativePath is not applied the it will show error.
+          </li>
+        </ul>
+      </li>
+      <li>Snapshot object can be used if we want to access the params of the url but if we want to load/update the url from that component then the snapshot will update
+        the url but the params data will which we use in business logic will not be updated, so for that we have to use activatedRoute params observable to update the param value
+        when it changes. If we know that from a particular component we will not update the param or reload then by using snapshot we can achieve that.
+      </li>
+      <!-- <li>queryParams i.e ?someValue in url, in html page we can simply pass with routerLink like this
+        [queryParams]="{key: value}" and in ts file we just have to pass in router.navigate array as second parameter </li>
+      <li>fragment i.e # in url, in html page we can simply pass with routerLink like this
+        [fragment]="value" or fragment= "value" and in ts file we just have to pass in router.navigate array as second parameter</li> -->
+      <li>Child routes are used to nest route inside route and we have to separate router-outlet for child routes, and for
+        child routes we have to add all child routes(of a same component) in children array of appRoutes
+      </li>
+      <li>Wildcard routes are used to handle wrong url or unwanted urls, if the user enter unwanted url then it
+        redirect to an component(error component).
+      </li>
+      <li>CanDeactivate guards is called we want to navigate away from the route before the current component gets deactivated.
+        For CanDeactivate we have to call a service, in that we have to create an interface of CanDeactivate, The Interface has one method i.e. canDeactivate.
+      </li>
+      <li>
+        A class is essentially an object factory (ie. a blueprint of what an object is supposed to look like and then implemented), whereas an interface is a structure used solely for type-checking.
+        While a class may have initialized properties and methods to help create objects, an interface essentially defines the properties and type an object can have.
+      </li>
+      <li>Resolver is service that is used to load the data before the component is loaded.</li>
+      </ul>
+  </div>
+  <div class="row">
+    <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
+      <ul class="nav nav-tabs">
+        <li role="presentation" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><a routerLink="/">Home</a></li>
+        <li role="presentation" routerLinkActive="active"><a routerLink="/servers">Servers</a></li>
+        <li role="presentation" routerLinkActive="active"><a [routerLink]="['/users']">Users</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
+      <!--router-outlet used to display all routes-->
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>

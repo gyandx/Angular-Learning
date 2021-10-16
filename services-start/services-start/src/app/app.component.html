@@ -1,0 +1,30 @@
+<div class="container">
+  <h4>{{title}}</h4>
+  <div class="row">
+    <p>Services:- These are simple classes that are used to  the encapsulate(reuse) the same business login with different components in angular,
+      rather than making new functions in for a same thing in every component.
+    </p>
+    <p>
+      Dependency Injection:- This is used to inject the service or the instance in the particular
+      component where this service can be used, as the component depend on that service dependency to perform some tasks.
+    </p>
+    <h5>Hierarchial of services</h5>
+    <p>The angular services hierarcy moves from top to down like tree not from down to up.</p>
+    <ul>
+      <li>App Module is the highest provider level. The same instance to all components, directives, all other child components</li>
+      <li>App Component is the second provider level.The same instance is available for the component and all its child components and child of child components</li>
+      <li>Any other component. The same instance is available for ony that component not for any other component</li>
+    </ul>
+  </div>
+  <div class="row">
+    <div class="col-xs-12 col-md-8 col-md-offset-2">
+      <app-new-account></app-new-account>
+      <hr>
+      <app-account
+        *ngFor="let acc of accounts; let i = index"
+        [account]="acc"
+        [id]="i"
+        ></app-account>
+    </div>
+  </div>
+</div>

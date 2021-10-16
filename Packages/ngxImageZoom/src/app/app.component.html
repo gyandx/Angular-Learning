@@ -1,0 +1,66 @@
+<div class="container">
+  <div class="content-wrapper m-auto" style="max-width: 420px;">
+    <h3 class="text-center">Ngx Image Zoom</h3>
+      <p class="m-1">This is used to apply zooming effect over an image.</p>
+      <p class="m-1">It has four types of mode:- hover,click,toggle,hover-freeze</p>
+      <ol>
+        <li>Install- npm install ngx-image-zoom --save</li>
+        <li>import NgxImageZoomModule in import array.</li>
+      </ol>
+      <p class="m-1">
+        For further reference click here:
+        <a href="https://www.npmjs.com/package/ngx-image-zoom" target="_blank"
+          >NgxImageZoom</a
+        >
+      </p>
+  </div>
+  <div class="row">
+    <div class="col-md-3">
+      <div>
+        <lib-ngx-image-zoom
+        class="image-wrapper"
+        [thumbImage]="myImg"
+        [magnification]="1"
+        zoomMode="hover"
+        ></lib-ngx-image-zoom>
+        <p class="text-center">Zoom Mode:- Hover</p>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="gradient-border">
+        <lib-ngx-image-zoom
+        class="image-wrapper"
+        [thumbImage]="myImg"
+        [magnification]="1"
+        zoomMode="click"
+        enableScrollZoom="true"
+        ></lib-ngx-image-zoom>
+      </div>
+      <p class="text-center">Zoom Mode:- Click</p>
+    </div>
+    <div class="col-md-3">
+      <div>
+        <lib-ngx-image-zoom
+        class="image-wrapper"
+        [thumbImage]="myImg"
+        [magnification]="0.5"
+        zoomMode="toggle"
+        ></lib-ngx-image-zoom>
+        <p class="text-center">Zoom Mode:- Toggle</p>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div>
+        <lib-ngx-image-zoom
+        class="image-wrapper"
+        [thumbImage]="myImg"
+        [magnification]="1"
+        zoomMode="hover-freeze"
+        enableScrollZoom="true"
+        enableLens="true"
+        ></lib-ngx-image-zoom>
+        <p class="text-center">Zoom Mode:- Hover Freeze</p>
+      </div>
+    </div>
+  </div>
+</div>

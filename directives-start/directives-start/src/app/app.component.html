@@ -1,0 +1,92 @@
+<div class="container">
+  <h4>{{ title }}</h4>
+  <div class="row">
+    <div class="col">
+      <table>
+        <tr>
+          <th colspan="" style="color: gold">Component Directives</th>
+          <th colspan="3" style="color: darkorchid">Structural Directives</th>
+          <th colspan="2" style="color: darkslateblue">Attribute Directives</th>
+        </tr>
+        <tr>
+          <td></td>
+          <td>ngIf</td>
+          <td>ngFor</td>
+          <td>ngSwitch</td>
+          <td>ngClass</td>
+          <td>ngStyle</td>
+        </tr>
+      </table>
+    </div>
+    <div class="col mb-2">
+      <p>
+        Directives are used to change the appearance, behavior, or layout of a
+        DOM element or used to manipulate the dom.
+      </p>
+      <ul>
+        <li>
+          Structural Directives are used to change the DOM layout by adding and
+          removing DOM elements.
+        </li>
+        <li>
+          Attribute Directives are used to change the appearance of the DOM
+          elements.
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-xs-12">
+      <button class="btn btn-primary mb-2" (click)="onlyOdd = !onlyOdd">
+        Show only odd numbers
+      </button>
+      <br /><br />
+      <ul class="list-group">
+        <!--odd numbers-->
+
+        <!-- <div *ngIf="onlyOdd">
+          <li class="list-group-item" *ngFor="let eachNum of oddNumbers"
+          [ngClass]="{odd: eachNum % 2 !== 0}"
+          [ngStyle]="{backgroundColor: eachNum % 2 !== 0 ? 'cyan' : 'transparent'}">
+            {{ eachNum }}
+          </li>
+        </div> -->
+
+        <!--even numbers-->
+        <div *ngIf="onlyOdd">
+          <li class="list-group-item" *ngFor="let eachNum of evenNumbers;let i=index"
+          [ngClass]="{odd: eachNum % 2 === 0}"
+          [ngStyle]="{backgroundColor: eachNum % 2 === 0 ? 'yellow' : 'transparent'}">
+            {{ eachNum }}
+          </li>
+        </div>
+
+        <!--custom structural directive (*ngIf)-->
+        <div *appCustomStructuralDirective="onlyOdd">
+          <li class="list-group-item" *ngFor="let eachNum of oddNumbers"
+          [ngClass]="{odd: eachNum % 2 !== 0}"
+          [ngStyle]="{backgroundColor: eachNum % 2 !== 0 ? 'cyan' : 'transparent'}">
+            {{ eachNum }}
+          </li>
+        </div>
+      </ul>
+
+      <!--the * in ngIf will convert into element view to ng-template and if the condition is valid
+      then the view will appear-->
+      <ng-template [ngIf]="onlyOdd">
+        <p>Only odd</p>
+      </ng-template>
+      <p appHighLight>Testing custom directives</p>
+      <p appBetterDirective [defaultColor]="'yellow'" [highLightColor]="'red'">Testing custom directives with better approach using renderer2</p>
+
+      <p>NgSwitch used to switch/check between different conditions</p>
+      <div [ngSwitch]="switchVal">
+        <p *ngSwitchCase="5">Value is 5</p>
+        <p *ngSwitchCase="10">Value is 10</p>
+        <p *ngSwitchCase="15">Value is 15</p>
+        <p *ngSwitchCase="45">Value is 25</p>
+      </div>
+    </div>
+  </div>
+</div>

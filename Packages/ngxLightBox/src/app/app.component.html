@@ -1,0 +1,29 @@
+<div class="container">
+  <div class="content-wrapper w-50" style="max-width: 420px; margin: 35px auto;">
+    <h3 class="text-center">Ngx Light Box</h3>
+    <p class="m-1">
+      Ngx light box is used to preview images in popup zoom manner
+    </p>
+    <p class="m-1">Steps to use ngx-light-box in angular</p>
+    <ol class="ml-2">
+      <li>npm install --save ngx-lightbox</li>
+      <p>update styles in angular.json and insert this in styles array</p>
+      <li>"./node_modules/ngx-lightbox/lightbox.css"</li>
+      <p>in app.module import lightmodule in the import array</p>
+      <li>imports: [ LightboxModule ]</li>
+      <p class="m-1">
+        For further reference click here:-
+        <a href="https://www.npmjs.com/package/ngx-lightbox" target="_blank"
+          >NgxLightBox</a
+        >
+      </p>
+    </ol>
+  </div>
+  <div class="row">
+    <div class="col-md-3" *ngFor="let image of albums; let i = index">
+      <div class="box">
+        <img class="w-100 h-100" [src]="image.thumb" (click)="open(i)" [alt]="image" />
+      </div>
+    </div>
+  </div>
+</div>

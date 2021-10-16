@@ -1,0 +1,45 @@
+<div class="container-fluid">
+  <div class="center">
+    <p>Maphighlight hover over a particular part of an image.</p>
+    <ul>
+      <li>install npm i ng-maphight@0.1.3</li>
+      <li>For reference follow:</li>
+      <li><a href="https://www.npmjs.com/package/ng-maphilight/v/0.1.3">NgMapHigh</a></li>
+      <li>import MaphilightModule in import array in app module.</li>
+      <li>use the scripts in index.html file, jquery is required.</li>
+      <li>For image mapping co-ordinates use this link:</li>
+      <li><a href="https://www.image-map.net/">Image Map Co-ordinates</a></li>
+      <li>For config options follow the below link:-</li>
+      <li>
+        <a href="https://projects.davidlynch.org/maphilight/docs/">Map Highlight</a>
+      </li>
+    </ul>
+  </div>
+
+  <div style="display: flex;justify-content: center;">
+    <maphilight id="statesMap" [config]="config">
+      <img src="assets/images/graph1.jpg" />
+      <map>
+        <area target="" alt="" title="" href="" coords="55,353,54,309,247,319,247,354" shape="poly" />
+        <area target="" alt="" title="" href="" coords="53,307,247,313,247,320,247,355,438,353,438,320" shape="poly" />
+        <area target="" alt="" title="" href="" coords="55,286,55,307,243,312,245,296" shape="poly" />
+        <area target="" alt="" title="" href="" coords="55,286,246,287,439,295,439,319,247,313,246,296" shape="poly" />
+        <area target="" alt="" title="" href="" coords="54,281,245,282,245,243,55,239" shape="poly" />
+        <area target="" alt="" title="" href="" coords="247,243,246,280,439,292,436,245" shape="poly" />
+        <area target="" alt="" title="" href="" coords="55,116,55,234,247,241,247,148" shape="poly" />
+        <area target="" alt="" title="" href="" coords="53,115,439,151,438,242,246,241,245,148" shape="poly" />
+      </map>
+    </maphilight>
+
+    <maphilight id="imagessMap" [config]="config">
+      <img src="assets/images/graph.jpg" />
+      <map>
+        <area target="" alt="" title="" href="" coords="55,313,57,354,246,354,246,320" shape="poly" />
+        <area target="" alt="" title="" href="" coords="56,310,438,321,438,353,246,354,244,319,57,314" shape="poly" />
+        <area target="" alt="" title="" href="" coords="56,309,247,315,247,299,55,285" shape="poly" />
+        <area target="" alt="" title="" href="" coords="53,284,439,298,438,319,247,315,247,299" shape="poly" />
+        <area target="" alt="" title="" href="" coords="55,233,246,252,247,290,56,285" shape="poly" />
+      </map>
+    </maphilight>
+  </div>
+</div>

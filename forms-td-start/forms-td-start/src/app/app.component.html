@@ -1,0 +1,77 @@
+<div class="container">
+  <div class="row">
+    <h3>Forms</h3>
+    <p>Forms are used to take data from user, in angular there are two types of forms.</p>
+    <ul>
+      <li>Template driven form(TDF)</li>
+      <p>For setting TDF we have to import FormsModule in app module.</p>
+      <p>In Template Driven Forms we specify behaviors/validations using directives and attributes in our template and let it work behind the scenes.
+         All things happen in Templates hence very little code is required in the component class.</p>
+         <ul>
+           <li>The form is set up using ngForm directive</li>
+           <li>Controls are set up using the ngModel directive </li>
+           <li>ngModel also provides the two-way data binding</li>
+           <li>The Validations are configured in the template via directives</li>
+           <li>We have to give ngModel and name property to every tag for TDF.</li>
+           <li>setValue method is used to set/override all the values of the form, whereas patchValue is used to set a single or
+             multiple value of the form.
+           </li>
+         </ul>
+        <p>TDF Contains little code in the component class and Easier to set up, while Difficult to add controls dynamically &
+          Unit testing is a challenge.
+        </p>
+    </ul>
+  </div>
+  <div class="row">
+    <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
+      <!-- <form #userForm="ngForm" (ngSubmit)="submitForm(userForm)"> -->
+      <form #userForm="ngForm" (ngSubmit)="submitForm()">
+        <div id="user-data" #userData="ngModelGroup" ngModelGroup="userData">
+          <div class="form-group">
+            <label for="username">Username</label>
+            <!--TDF requires 2 things name and ngModel-->
+            <input type="text" id="username" class="form-control" ngModel name="username" required>
+          </div>
+          <button class="btn btn-default" type="button" (click)="suggestUserName()">Suggest an Username</button>
+          <div class="form-group">
+            <label for="email">Mail</label>
+            <input type="email" id="email" class="form-control" ngModel name="email" required email #email="ngModel">
+            <span class="help-block" *ngIf="email.invalid && email.touched">Please enter valid email</span>
+          </div>
+          <span *ngIf="userData.invalid && userData.touched">Enter valid username</span>
+        </div>
+        <div class="form-group">
+          <label for="secret">Secret Questions</label>
+          <!--Assigning default select value-->
+          <select id="secret" class="form-control" [ngModel]="defaultSelect" name="secret">
+            <option value="pet">Your first Pet?</option>
+            <option value="teacher">Your first teacher?</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <textarea name="questionAnswer" rows="3" [(ngModel)]="answer"></textarea>
+          <p>Reply: {{answer}}</p>
+        </div>
+        <div class="form-group">
+          <label *ngFor="let eachGender of gender">
+            <!-- <input type="radio" ngModel value={{eachGender}} name="gender"/> -->
+            <input type="radio" [ngModel]="defaultGender" value={{eachGender}} name="gender" required/>
+            {{eachGender}}
+          </label>
+        </div>
+        <button class="btn btn-primary" [disabled]="userForm.invalid" type="submit">Submit</button>
+        <button class="btn btn-warning" (click)="resetForm()">Reset</button>
+      </form>
+    </div>
+  </div>
+  <div class="row" *ngIf="toggleUserData">
+    <div class="col-xs-12">
+      <h5>Your Data</h5>
+      <p>Name: {{userInfo.username}}</p>
+      <p>Email: {{userInfo.email}}</p>
+      <p>Question: {{userInfo.question}}</p>
+      <p>Answer: {{userInfo.answer}}</p>
+      <p>Gender: {{userInfo.gender}}</p>
+    </div>
+  </div>
+</div>

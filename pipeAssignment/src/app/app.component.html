@@ -1,0 +1,25 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
+      <h3>Assignment</h3>
+      <p>Make a pipe to reverse the instanceType i.e medium=muidem you can use reverse method of javascript</p>
+      <p>Make a another pipe to sort the server array in name alphabetically manner</p>
+    </div>
+    <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
+      <ul class="list-group">
+        <li
+          class="list-group-item"
+          *ngFor="let server of servers | sortFilter"
+          [ngClass]="getStatusClasses(server)">
+          <span
+            class="badge">
+            {{ server.status }}
+          </span>
+          <strong>{{ server.name}}</strong> |
+          {{ server.instanceType | reversePipe}} |
+          {{ server.started}}
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>

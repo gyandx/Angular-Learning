@@ -1,0 +1,43 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
+      <h3>Observable</h3>
+      <p>This is a wrapper around data source( stream of data source that continuously emits data over data ). It has 3 states:-</p>
+      <ul>
+        <li>Handle Data/Next</li>
+        <li>Handle Error</li>
+        <li>Handle Complete</li>
+      </ul>
+      <p>Observer is there to execute  when we subscribe the observable and write our code that what to to when we subscribe
+        to get data, error or complete</p>
+      <p>Observable are used to handle asynchronous data.</p>
+      <p>When error comes observables become unsubscribe by itself.</p>
+      <p>Subject:- is a special type of Observable in RxJs Library in which we can send our data to other components or services. A Subject is like an Observable but can
+        multicast to many observers which means subject is at the same time an Observable and an Observer.</p>
+      <ul>
+        <li>A Subject is a Special type of Observable that allows value to be multicasted to many Observers.</li>
+        <li>Subject are like event emitters.</li>
+        <li>No Initial Value</li>
+      </ul>
+      <p>Behavior Subject: It is similar to subject but only difference is that we can set the initial value .</p>
+    </div>
+    <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
+      <a routerLink="/">Home</a> |
+      <a [routerLink]="['user', 1]">
+        User 1
+      </a>
+      |
+      <a [routerLink]="['user', 2]">
+        User 2
+      </a>
+      <hr>
+      <p *ngIf="userActivate">Activated</p>
+    </div>
+  </div>
+  <hr />
+  <div class="row">
+    <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>

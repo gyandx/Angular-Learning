@@ -1,0 +1,33 @@
+<div class="row">
+  <div class="col-xs-12 col-sm-4">
+    <div class="list-group">
+      <!--use og queryParams and fragment statically-->
+      <!-- <a
+      [routerLink]="['/servers',5,'edit']"
+      [queryParams]="{allowed : 1}"
+      fragment="show"
+        class="list-group-item"
+        *ngFor="let server of servers">
+        {{ server.name }}
+      </a> -->
+      <a
+      [routerLink]="['/servers', server.id]"
+      [queryParams]="{allowed : server.id === 2 ? '1' : '0'}"
+      fragment="show"
+        class="list-group-item"
+        *ngFor="let server of servers">
+        {{ server.name }}
+      </a>
+    </div>
+  </div>
+  <div class="col-xs-12 col-sm-4">
+    <!--used for children routes-->
+    <!-- <a routerLink="../servers">Reload</a> -->
+    <router-outlet></router-outlet>
+    <!-- <button class="btn btn-success" (click)="reload()">Reload</button> -->
+    <!-- <app-edit-server></app-edit-server>
+    <hr> -->
+    <!-- <app-server></app-server> -->
+  </div>
+</div>
+

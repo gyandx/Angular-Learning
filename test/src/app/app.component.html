@@ -1,0 +1,48 @@
+<form [formGroup]="contactForm" (ngSubmit)="submitForm(contactForm)">
+  <div class="mb-3">
+    <label for="name" class="form-label">Name</label>
+    <input type="text" class="form-control" id="name" formControlName="name" required>
+    <span *ngIf="contactForm.get('name').invalid && (contactForm.get('name').touched || contactForm.get('name').dirty)">
+      <span class="help-box" *ngIf="contactForm.get('name').errors?.required">Name is required</span>
+      <span class="help-box" *ngIf="contactForm.get('name').errors?.pattern">Name should only contain alphabets</span>
+    </span>
+  </div>
+  <div class="mb-3">
+    <label for="age" class="form-label">Age</label>
+    <input type="number" class="form-control" id="age" formControlName="age" required>
+    <span *ngIf="contactForm.get('age').invalid && (contactForm.get('age').touched || contactForm.get('age').dirty)">
+      <span class="help-box" *ngIf="contactForm.get('age').errors?.required">Age is required</span>
+      <span class="help-box" *ngIf="contactForm.get('age').errors?.ageRange">Age must be range between 18 to 60</span>
+    </span>
+  </div>
+  <div class="mb-3">
+    <label class="form-label" for="email">Email</label>
+    <input type="email" class="form-control" id="email" formControlName="email" required>
+    <span *ngIf="contactForm.get('email').invalid && (contactForm.get('email').touched || contactForm.get('email').dirty)">
+      <span class="help-box" *ngIf="contactForm.get('email').errors?.required">Email is required</span>
+      <span class="help-box" *ngIf="contactForm.get('email').errors?.email">Email is required</span>
+    </span>
+  </div>
+  <div class="mb-3">
+    <label class="form-label" for="phone">Phone No</label>
+    <input type="text" class="form-control" id="phone" formControlName="phone" required>
+    <span *ngIf="contactForm.get('phone').invalid && (contactForm.get('phone').touched || contactForm.get('phone').dirty)">
+      <span class="help-box" *ngIf="contactForm.get('phone').errors?.required">Phone No. is required</span>
+      <span class="help-box" *ngIf="contactForm.get('phone').errors?.pattern">Enter Valid Phone Number</span>
+    </span>
+  </div>
+  <div class="form-check">
+    <input class="form-check-input" type="radio" name="gender" formControlName="gender" id="male" value="male" required>
+    <label class="form-check-label" for="male">
+      Male
+    </label>
+  </div>
+  <div class="form-check">
+    <input class="form-check-input" type="radio" name="gender" id="female" formControlName="gender" value="female" checked required>
+    <label class="form-check-label" for="female">
+      Female
+    </label>
+  </div>
+  <button type="submit" class="btn btn-primary" [disabled]="contactForm.invalid">Submit</button>
+</form>
+<router-outlet></router-outlet>
